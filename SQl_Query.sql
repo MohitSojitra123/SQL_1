@@ -291,53 +291,240 @@ alter table deposit alter column amount int
 alter table deposit drop column city
 
 --6. Rename Column ActNo to ANO.
-
+sp_rename 'Deposit_detail.actno', 'ano'
+select * from deposit_detail
 
 --7. Change name of table DEPOSIT to DEPOSIT_DETAIL
-
-
+sp_rename  'deposit','deposit_detail'
 
 --Part => B
 
 --1. Rename Column ADATE to AOPENDATE OF DEPOSIT_DETAIL table.
+sp_rename 'deposit_detail.adate' , 'Deposit_detail'
 
 --2. Delete Column AOPENDATE from the DEPOSIT_DETAIL table.
+alter table deposit_detail  drop column deposit_detail  
 
 --3. Rename Column CNAME to CustomerName.
+sp_rename 'deposit_detail.cname' , 'customername'
 
 --4. Add Column country.
+alter table deposit_detail add country varchar(50)
+
 
 --Part => C
 
+create table student_detail(
+ enrollment_No varchar(20),
+ name varchar(25),
+ cpi decimal(5,2),
+ birthdate datetime
+)
+
+select * from student_detail
+
 --1. Add two more columns City VARCHAR (20) (Not null) and Backlog INT (Null).
+alter table student_detail add city varchar(20) not null , backlog int null
 
 --2. Add column department VARCHAR (20) Not Null.
+alter table student_detail add department varchar(20)
 
 --3. Change the size of NAME column of student_detail from VARCHAR (25) to VARCHAR (35).
+alter table student_detail alter column name varchar(25)
 
 --4. Change the data type DECIMAL to INT in CPI Column.
+alter table student_detail alter column cpi int
 
 --5. Delete Column City from the student_detail table.
+alter table student_detail drop column city
 
 --6. Rename Column Enrollment_No to ENO.
+sp_rename 'student_detail.enrollment_no' , 'eno'
 
 --7. Change name of table student_detail to STUDENT_MASTER.
+sp_rename 'student_detail' , 'student_master'
 
 --Part => A 
 
--- 
+select * from deposit_detail
+
+--1. Delete all the records of DEPOSIT_DETAIL table having amount less than and equals to 4000. 
+delete from deposit_detail where amount <=4000
+
+--2. Delete all the accounts CHANDI BRANCH.
+delete from deposit_detail where bname='chandi'
+
+--3. Delete all the accounts having account number (ANO) is greater than 102 and less than 105
+delete from deposit_detail where ano >102 and ano < 105
+
+--4. Delete all the accounts whose branch is ‘AJNI’ or ‘POWAI’
+delete from deposit_detail where bname = 'ajni' or bname = 'powai' 
+
+--5. Delete all the accounts whose account number is NULL.
+delete from deposit_detail where ano is null
+
+--6. Delete all the remaining records using Delete command.
+delete from deposit_detail;
+
+--7. Delete all the records of Deposit_Detail table. (Use Truncate)
+truncate table deposit_detail;
+
+--8. Remove Deposit_Detail table. (Use Drop)
+drop table deposit_detail;
+
+--Part => B
+create table employee_master
+(
+ empno int,
+ empname varchar(25),
+ joinngdate datetime,
+ salary decimal(8,2),
+ city varchar(20)
+)
+
+insert into employee_master values
+(101,'keyur','2002-01-05',12000.00,'rajkot'),
+(102,'hardik','2004-02-15',14000.00,'ahmedabad'),
+(103,'kajal','2006-03-14',15000.00,'baroda'),
+(104,'bhoomi','2005-06-23',12500.00,'ahmedabad'),
+(105,'harmit','2004-02-15',14000.00,'rajkot'),
+(106,'mitesh','2001-09-25',5000.00,'jamnagar'),
+(107,'meera',null,7000.00,'morbi'),
+(108,'krishn','2003-02-06',10000.00,null)
+
+--1. Delete all the records of Employee_MASTER table having salary greater than and equals to 14000. 
+delete employee_master where salary >= 14000
+
+--2. Delete all the Employees who belongs to ‘RAJKOT’ city.
+delete employee_master where city='rajkot'
+
+--3. Delete all the Employees who joined after 1-1-2007.
+delete employee_master where joinngdate>'2007-01-01'
+
+--4. Delete the records of Employees whose joining date is null and Name is not null.
+delete employee_master where joinngdate is null and empname is not null
+
+--5. Delete the records of Employees whose salary is 50% of 20000.
+delete employee_master where salary=((20000*50)/100)
+delete employee_master where salary= 20000 * 0.5
+
+--6. Delete the records of Employees whose City Name is not empty.
+delete employee_master where city is not null
+
+--7. Delete all the records of Employee_MASTER table. (Use Truncate)
+truncate table employee_master
+
+--8. Remove Employee_MASTER table. (Use Drop)
+drop table employee_master
+
+--Lab => 3
+--Part => A
+
+create table student
+(
+ stuid int,
+ firstname varchar(25),
+ lastname varchar(25),
+ website varchar(50),
+ city varchar(25),
+ address varchar(100)
+)
+
+insert into student values
+()
+
+
+--1. Display the name of students whose name starts with ‘k’
+
+
+--2. Display the name of students whose name consists of five characters.
+
+
+--3. Retrieve the first name & last name of students whose city name ends with ‘a’ & contains six characters 
+
+--4. Display all the students whose last name ends with ‘tel’.
+
+
+--5. Display all the students whose first name starts with ‘ha’ & ends with‘t’.
+
+
+--6. Display all the students whose first name starts with ‘k’ and third character is ‘y’.
+
+
+--7. Display the name of students having no website and name consists of five characters.
+
+
+--8. Display all the students whose last name consist of ‘jer’.
+
+
+--9. Display all the students whose city name starts with either ‘r’ or ‘b’.
+
+
+--10. Display all the name students having websites.
+
+
+--11. Display all the students whose name starts from alphabet A to H
+
+
+--12. Display all the students whose name’s second character is vowel.
+
+
+--13. Display the name of students having no website and name consists of minimum five characters.
+
+
+--14. Display all the students whose last name starts with ‘Pat’.
+
+
+--15. Display all the students whose city name does not starts with ‘b’.
+
+
+--16. Display all the students whose student ID ends with digit.
+
+
+--17. Display all the students whose address does not contain any digit
+
+
+--18. Find students whose first name starts with 'B', last name ends with 'A', and their website contains either 'math'
+--or 'science'. Ensure that their city does not start with 'B'.
+
+
+--19. Retrieve students who have 'Shah' in their last name and whose city ends with 'd'. Additionally, their website
+--should be either null or contain 'com'.
+
+
+--20. Select students whose first and second character is a vowel. Their city should start with 'R' and they must have
+--a website containing '.com'.
+
+
+--Part => B
+
+--1. Display all the students whose name’s second character is vowel and of and start with H.
+
+
+--2. Display all the students whose last name does not ends with ‘a’.
+
+
+--3. Display all the students whose first name starts with consonant
+
+--4. Retrieve student details whose first name starts with 'K', last name ends with 'tel', and either their website
+--contains 'tech' or they live in a city starting with 'R'.
+
+
+--5. Retrieve students whose address contains a hyphen '-' and whose city starts with either 'R' or 'B'. They must
+--have a website that ends with '.com' and their first name should not start with 'A'
+
+
+--Part => C
+
+--1. Display all the students whose address contains single quote or double quote.
+
+--2. Find students whose city does not contain the letter 'S' and their address contains either single or double
+--quotes. Their last name should start with 'P' and they must have a website that contains 'on'
 
 
 
 
-
-
-
-
-
-
-
-
-
+--Lab => 4
+--Part => A
 
 
