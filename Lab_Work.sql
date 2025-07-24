@@ -571,78 +571,79 @@ select * from Employees
 
 
 -- 1 Employees whose first name starts with ‘A’ and is 5 characters long
-
+select * from Employees where FirstName like 'a____'
 
 -- 2 Employees whose last name contains two consecutive 's'
-
+select * from Employees where LastName like '%ss%'
 
 -- 3 Employees whose email ends with 'gmail.com'
-
+select * from Employees where email like '%gmail.com'
 
 -- 4 Employees whose name starts and ends with a vowel
-
+select * from Employees where FirstName like '[aeiou]%%[aeiou]'
 
 -- 5 Employees whose email contains numbers
-
+select * from Employees where Email like '%[0-9]%' 
 
 -- 6 Employees whose name has 'a' as the second character
-
+select * from Employees where FirstName like '_a%'
 
 -- 7 Employees whose first name contains both 'a' and 'e'
-
+select * from Employees where FirstName like '%a%' and FirstName like '%e%'
 
 -- 8 Employees whose designation contains 'Manager' anywhere
-
+select * from Employees where Designation like '%manager%'
 
 -- 9 Employees whose first name ends with ‘son’
-
+select * from Employees where FirstName like '%son'
 
 -- 10 Employees whose name contains 3 or more vowels
-
+select * from Employees where FirstName like '%[aeiou][aeiou][aeiou]%'
 
 -- 11 Emails that start with any 3 letters followed by a number
-
+select * from Employees where email like '%[a-z][a-z][a-z][0-9]%'
 
 -- 12 Last name containing exactly 2 'a' characters
-
+select * from Employees where LastName like '%a%a%'
 
 -- 13 First name where 2nd and 4th characters are vowels
-
+select * from Employees where FirstName like '_[aeiou]_[aeiou]%'
 
 -- 14 Names that do not contain any vowels
-
+select * from Employees where FirstName not like '%[aeiou]%'
 
 -- 15 First name starts with ‘J’ and has ‘n’ somewhere after 3rd character
-
+select * from Employees where FirstName like 'j_%n%'
 
 -- 16 First name contains at least one uppercase letter
-
+select * from Employees where FirstName like '%[a-z]%'
 
 -- 17 Designation ending with ‘-in-Charge’
-
+select * from Employees where Designation like '%-in-charge'
 
 -- 18 First name has same letter at start and end
-
+select * from Employees where RIGHT(FirstName,1) = LEFT(FirstName,1)
 
 -- 19 Emails that contain '@' and end with '.edu'
-
+select * from Employees where Email like '%@%' and Email like '%.edu'
 
 -- 20 Department name includes digits
-
+select * from Employees where Department like '%[0-9]%'
 
 -- 21 First name contains two sets of double letters
 
 
 -- 22 Emails that start with ‘info’ and domain is yahoo
-
+select * from Employees where Email like 'info%' and Email like '%yahoo%'
 
 -- 23 Names that have a dash in them
-
+select * from Employees where FirstName like '%-%'
 
 -- 24 Emails that contain ‘.’ before @
-
+select * from Employees where Email like '%.%@%' 
 
 -- 25 Employees whose name is palindrome (e.g. “Anna”)
+select * from Employees where FirstName = REVERSE(FirstName)
 
 --Lab => 4
 --Part => A
