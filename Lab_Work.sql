@@ -534,6 +534,115 @@ select * from student where address like '%''%' or address like '%"%';
 --quotes. Their last name should start with 'P' and they must have a website that contains 'on'
 select * from student where city not like '%s%' and (address like '%''%' or address like '%"%') and lastname like 'p%' and website like '%on%'; 
 
+--Like Operator Extra Query...
+
+CREATE TABLE Employees (
+    EmpID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    Designation VARCHAR(100),
+    Department VARCHAR(50)
+);
+
+INSERT INTO Employees (EmpID, FirstName, LastName, Email, Designation, Department) VALUES
+(1, 'Aamir',    'Ross',     'aamir.ross@gmail.com',        'Sales Manager',         'Sales'),
+(2, 'Anita',    'Sasson',   'anita123@outlook.com',        'HR Executive',          'HR'),
+(3, 'Edwin',    'Gates',    'edwin.gates@yahoo.com',       'General Manager',       'Management'),
+(4, 'Eva',      'Silva',    'eva.silva@yahoo.edu',         'IT-in-Charge',          'IT1'),
+(5, 'Otto',     'Smith',    'otto.smith@abc.com',          'Support Staff',         'Support'),
+(6, 'Aaron',    'Johnson',  'aaron.johnson@gmail.com',     'Finance Manager',       'Finance'),
+(7, 'Eve',      'Essess',   'eve.essess@college.edu',      'Project-in-Charge',     'Research'),
+(8, 'Steve',    'Mason',    'info42@yahoo.com',            'Operations Manager',    'Operations'),
+(9, 'Anna',     'Hannah',   'anna.hannah@gmail.com',       'HR-in-Charge',          'HR2'),
+(10,'John',     'Nash',     'john3@gmail.com',             'Technical Lead',        'Development'),
+(11,'Jean',     'Clark',    'jean.clark@yahoo.com',        'Legal Advisor',         'Legal1'),
+(12,'Aeon',     'Xenon',    'aeonxenon@edu.edu',           'CEO',                   'Admin'),
+(13,'Ellen',    'Briggs',   'ellen.briggs@edu.com',        'Branch Manager',        'Marketing1'),
+(14,'Jenna',    'Marks',    'jenna98@abc.net',             'Sales Executive',       'Sales2'),
+(15,'Deed',     'Zzz',      'deed@domain.com',             'Guard-in-Charge',       'Security'),
+(16,'Abba',     'Civic',    'abba.civic@gmail.com',        'Helper',                'Utility'),
+(17,'Geoff',    'Hall',     'geoff.hall@gmail.com',        'Support Staff',         'Support3'),
+(18,'Jeevan',   'Morris',   'jeevan.morris@yahoo.com',     'Deputy Manager',        'IT3'),
+(19,'Reer',     'Rrrr',     'reer.rrr@xyz.edu',            'Chief-in-Charge',       'Strategy'),
+(20,'Sally',    'Glass',    'info.sally@yahoo.com',        'Team Lead',             'Team1');
+
+select * from Employees
+
+
+-- 1 Employees whose first name starts with ‘A’ and is 5 characters long
+
+
+-- 2 Employees whose last name contains two consecutive 's'
+
+
+-- 3 Employees whose email ends with 'gmail.com'
+
+
+-- 4 Employees whose name starts and ends with a vowel
+
+
+-- 5 Employees whose email contains numbers
+
+
+-- 6 Employees whose name has 'a' as the second character
+
+
+-- 7 Employees whose first name contains both 'a' and 'e'
+
+
+-- 8 Employees whose designation contains 'Manager' anywhere
+
+
+-- 9 Employees whose first name ends with ‘son’
+
+
+-- 10 Employees whose name contains 3 or more vowels
+
+
+-- 11 Emails that start with any 3 letters followed by a number
+
+
+-- 12 Last name containing exactly 2 'a' characters
+
+
+-- 13 First name where 2nd and 4th characters are vowels
+
+
+-- 14 Names that do not contain any vowels
+
+
+-- 15 First name starts with ‘J’ and has ‘n’ somewhere after 3rd character
+
+
+-- 16 First name contains at least one uppercase letter
+
+
+-- 17 Designation ending with ‘-in-Charge’
+
+
+-- 18 First name has same letter at start and end
+
+
+-- 19 Emails that contain '@' and end with '.edu'
+
+
+-- 20 Department name includes digits
+
+
+-- 21 First name contains two sets of double letters
+
+
+-- 22 Emails that start with ‘info’ and domain is yahoo
+
+
+-- 23 Names that have a dash in them
+
+
+-- 24 Emails that contain ‘.’ before @
+
+
+-- 25 Employees whose name is palindrome (e.g. “Anna”)
 
 --Lab => 4
 --Part => A
