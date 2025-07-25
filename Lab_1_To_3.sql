@@ -88,7 +88,7 @@ select actno,cname,amount from deposit
 --4. Display Loan No, Amount from BORROW.
 select loanno,amount from borrow
 
---5. Display loan details of all customers who belongs to ‘ANDHERI’ branch from borrow table.
+--5. Display loan details of all customers who belongs to ï¿½ANDHERIï¿½ branch from borrow table.
 select * from borrow where bname='andheri'
 
 --6. Give account no and amount of depositor, whose account no is equals to 106 from deposit table. 
@@ -103,7 +103,7 @@ select cname from deposit where adate > '1995-12-01'
 --9. Display name of customers whose account no is less than 105 from deposit table.
 select cname from deposit where actno < 105
 
---10. Display name of customer who belongs to either ‘NAGPUR’ or ‘DELHI’ from customer table. (USE OR & IN)
+--10. Display name of customer who belongs to either ï¿½NAGPURï¿½ or ï¿½DELHIï¿½ from customer table. (USE OR & IN)
 select cname from customers where city='nagpur' or city='delhi'
 select cname from customers where city in('nagpur','delhi') 
 
@@ -116,20 +116,20 @@ select cname from deposit where (amount > 4000 and actno < 105)
 select * from borrow where amount >= 3000 and amount <= 8000
 select * from borrow where amount between 3000 and 8000 
 
---13. Find all depositors who do not belongs to ‘ANDHERI’ branch from deposit table.
+--13. Find all depositors who do not belongs to ï¿½ANDHERIï¿½ branch from deposit table.
 select * from deposit where  not bname='andhri'
 select * from deposit where  bname!='andhri'
 
---14. Display Account No, Customer Name & Amount of such customers who belongs to ‘AJNI’, ‘KAROLBAGH’ Or
---‘M.G. ROAD’ and Account No is less than 104 from deposit table.
+--14. Display Account No, Customer Name & Amount of such customers who belongs to ï¿½AJNIï¿½, ï¿½KAROLBAGHï¿½ Or
+--ï¿½M.G. ROADï¿½ and Account No is less than 104 from deposit table.
 select actno,cname,amount from deposit where (bname='ajni' or bname='karolbagh' or bname='M.G. ROAD') and actno < 104 
 select actno,cname,amount from deposit where bname in('ajni','karolbagh','M.G. ROAD') and actno < 104
 
---15. Display all loan no, customer from borrow table does not belong to ‘VIRAR’ or ‘AJNI’ branch. (use NOT IN)
+--15. Display all loan no, customer from borrow table does not belong to ï¿½VIRARï¿½ or ï¿½AJNIï¿½ branch. (use NOT IN)
 select * from borrow where  bname!='virar' and bname!='ajni'
 select * from borrow where bname not in('virar','ajni')
 
---16. Display all the customer’s name other than ‘MINU’ from deposit table (Use: NOT, <>, !=)
+--16. Display all the customerï¿½s name other than ï¿½MINUï¿½ from deposit table (Use: NOT, <>, !=)
 select * from customers where cname!='minu'
 select * from customers where cname<>'minu'
 select * from customers where not cname='minu'
@@ -156,7 +156,7 @@ select top 5 * from deposit
 --2. Display all the details of first three depositors from deposit table whose amount is greater than 1000.
 select top 3 * from deposit where amount > 1000
 
---3. Display Loan No, Customer Name of first five borrowers whose branch name does not belongs to ‘ANDHERI’
+--3. Display Loan No, Customer Name of first five borrowers whose branch name does not belongs to ï¿½ANDHERIï¿½
 --from borrow table
 select top 5 loanno,cname from borrow where  bname!='ANDHERI'  
 
@@ -237,10 +237,10 @@ update deposit set amount=(amount+(amount*20/100))
 update deposit set amount=(amount+1000) 
 
 --4. Update the BORROW table to set the amount to 7000 and the branch name to 'CENTRAL' where the customer
---name is ‘MEHUL’ and the loan number is even.
+--name is ï¿½MEHULï¿½ and the loan number is even.
 update borrow set amount=7000 , bname='central' where cname='mehul' and (loanno%2 = 0)
 
---5. Update the DEPOSIT table to set the date to '2022-05-15' and the amount to 2500 for all accounts in ‘VRCE’
+--5. Update the DEPOSIT table to set the date to '2022-05-15' and the amount to 2500 for all accounts in ï¿½VRCEï¿½
 --and with an account number less than 105.
 update deposit set adate='2022-05-15' , amount=2500.00 where actno < 105 and bname='vrce'
 
@@ -269,7 +269,7 @@ update borrow set amount=5000.00 , bname='vrce' , cname='darshan' where loanno=4
 --2000.
 update deposit set adate='2021-01-01' where amount < 2000
 
---7. Update the Deposit table and set the date to NULL & Branch name to ‘ANDHERI whose Account No is 110.
+--7. Update the Deposit table and set the date to NULL & Branch name to ï¿½ANDHERI whose Account No is 110.
 update deposit set adate=null , bname='andheri'where actno=110 
 
 --Part => A
@@ -291,7 +291,7 @@ alter table deposit alter column amount int
 alter table deposit drop column city
 
 --6. Rename Column ActNo to ANO.
-sp_rename 'Deposit_detail.actno', 'ano'
+sp_rename 'Deposit_detail.actno',ï¿½'ano'
 select * from deposit_detail
 
 --7. Change name of table DEPOSIT to DEPOSIT_DETAIL
@@ -357,7 +357,7 @@ delete from deposit_detail where bname='chandi'
 --3. Delete all the accounts having account number (ANO) is greater than 102 and less than 105
 delete from deposit_detail where ano >102 and ano < 105
 
---4. Delete all the accounts whose branch is ‘AJNI’ or ‘POWAI’
+--4. Delete all the accounts whose branch is ï¿½AJNIï¿½ or ï¿½POWAIï¿½
 delete from deposit_detail where bname = 'ajni' or bname = 'powai' 
 
 --5. Delete all the accounts whose account number is NULL.
@@ -395,7 +395,7 @@ insert into employee_master values
 --1. Delete all the records of Employee_MASTER table having salary greater than and equals to 14000. 
 delete employee_master where salary >= 14000
 
---2. Delete all the Employees who belongs to ‘RAJKOT’ city.
+--2. Delete all the Employees who belongs to ï¿½RAJKOTï¿½ city.
 delete employee_master where city='rajkot'
 
 --3. Delete all the Employees who joined after 1-1-2007.
@@ -431,42 +431,42 @@ create table student
 )
 
 insert into student values
-(1011,'keyur','patel','techonthenet.com','rajkot','A-303 ‘Vasant Kunj’, Rajkot'),
-(1022,'hardik','shah','digminecraft.com','ahmedabad','“Ram Krupa”, Raiya Road'),
+(1011,'keyur','patel','techonthenet.com','rajkot','A-303 ï¿½Vasant Kunjï¿½, Rajkot'),
+(1022,'hardik','shah','digminecraft.com','ahmedabad','ï¿½Ram Krupaï¿½, Raiya Road'),
 (1033,'kajal','trivedi','bigactivitiess.com','baroda','raj bhavan plot, near garden'),
-(1044,'bhoomi','gajera','checkyourmath.com','ahmedabad','“Jig’s Home”, Narol'),
+(1044,'bhoomi','gajera','checkyourmath.com','ahmedabad','ï¿½Jigï¿½s Homeï¿½, Narol'),
 (1055,'harmit','mital','@me.darshan.com','rajkot','b-55,raj residency'),
 (1066,'ashok','jani',null,'baroda','a502,club house buliding');
 
 select * from student 
 
---1. Display the name of students whose name starts with ‘k’
+--1. Display the name of students whose name starts with ï¿½kï¿½
 select * from student where firstname like 'k%'
 
 --2. Display the name of students whose name consists of five characters.
 select * from student where firstname like '_____'
 
 
---3. Retrieve the first name & last name of students whose city name ends with ‘a’ & contains six characters 
+--3. Retrieve the first name & last name of students whose city name ends with ï¿½aï¿½ & contains six characters 
 select * from student where city like '_____%a'
 
---4. Display all the students whose last name ends with ‘tel’.
+--4. Display all the students whose last name ends with ï¿½telï¿½.
 select * from student where lastname like '%tel'
 
---5. Display all the students whose first name starts with ‘ha’ & ends with‘t’.
+--5. Display all the students whose first name starts with ï¿½haï¿½ & ends withï¿½tï¿½.
 select * from student where firstname like 'ha%' and firstname like '%t'
 
---6. Display all the students whose first name starts with ‘k’ and third character is ‘y’.
+--6. Display all the students whose first name starts with ï¿½kï¿½ and third character is ï¿½yï¿½.
 select * from student where firstname like 'k%_y%'
 select * from student where firstname like 'k_y%'
 
 --7. Display the name of students having no website and name consists of five characters.
 select * from student where website is null and firstname like '_____'
 
---8. Display all the students whose last name consist of ‘jer’.
+--8. Display all the students whose last name consist of ï¿½jerï¿½.
 select * from student where lastname like '%jer%'
 
---9. Display all the students whose city name starts with either ‘r’ or ‘b’.
+--9. Display all the students whose city name starts with either ï¿½rï¿½ or ï¿½bï¿½.
 select * from student where city like 'r%' or city like 'b%'
 
 --10. Display all the name students having websites.
@@ -476,16 +476,16 @@ select * from student where website like '%'
 --11. Display all the students whose name starts from alphabet A to H
 select * from student where firstname like '[a-h]%'
 
---12. Display all the students whose name’s second character is vowel.
+--12. Display all the students whose nameï¿½s second character is vowel.
 select * from student where firstname like '_[aeiou]%'
 
 --13. Display the name of students having no website and name consists of minimum five characters.
 select * from student where website is null and firstname like '_____'
 
---14. Display all the students whose last name starts with ‘Pat’.
+--14. Display all the students whose last name starts with ï¿½Patï¿½.
 select * from student where lastname like 'pat%'
 
---15. Display all the students whose city name does not starts with ‘b’.
+--15. Display all the students whose city name does not starts with ï¿½bï¿½.
 select * from student where city not like 'b%'
 
 --16. Display all the students whose student ID ends with digit.
@@ -508,10 +508,10 @@ select * from student where firstname like '[aeiou][aeiou]%' and city like 'r%' 
 
 --Part => B
 
---1. Display all the students whose name’s second character is vowel and of and start with H.
+--1. Display all the students whose nameï¿½s second character is vowel and of and start with H.
 select * from student where firstname  like 'h[aeiou]%' 
 
---2. Display all the students whose last name does not ends with ‘a’.
+--2. Display all the students whose last name does not ends with ï¿½aï¿½.
 select * from student where lastname not like '%a'
 
 --3. Display all the students whose first name starts with consonant
@@ -570,7 +570,7 @@ INSERT INTO Employees (EmpID, FirstName, LastName, Email, Designation, Departmen
 select * from Employees
 
 
--- 1 Employees whose first name starts with ‘A’ and is 5 characters long
+-- 1 Employees whose first name starts with ï¿½Aï¿½ and is 5 characters long
 select * from Employees where FirstName like 'a____'
 
 -- 2 Employees whose last name contains two consecutive 's'
@@ -594,7 +594,7 @@ select * from Employees where FirstName like '%a%' and FirstName like '%e%'
 -- 8 Employees whose designation contains 'Manager' anywhere
 select * from Employees where Designation like '%manager%'
 
--- 9 Employees whose first name ends with ‘son’
+-- 9 Employees whose first name ends with ï¿½sonï¿½
 select * from Employees where FirstName like '%son'
 
 -- 10 Employees whose name contains 3 or more vowels
@@ -612,13 +612,13 @@ select * from Employees where FirstName like '_[aeiou]_[aeiou]%'
 -- 14 Names that do not contain any vowels
 select * from Employees where FirstName not like '%[aeiou]%'
 
--- 15 First name starts with ‘J’ and has ‘n’ somewhere after 3rd character
+-- 15 First name starts with ï¿½Jï¿½ and has ï¿½nï¿½ somewhere after 3rd character
 select * from Employees where FirstName like 'j_%n%'
 
 -- 16 First name contains at least one uppercase letter
 select * from Employees where FirstName like '%[a-z]%'
 
--- 17 Designation ending with ‘-in-Charge’
+-- 17 Designation ending with ï¿½-in-Chargeï¿½
 select * from Employees where Designation like '%-in-charge'
 
 -- 18 First name has same letter at start and end
@@ -633,19 +633,18 @@ select * from Employees where Department like '%[0-9]%'
 -- 21 First name contains two sets of double letters
 
 
--- 22 Emails that start with ‘info’ and domain is yahoo
+-- 22 Emails that start with ï¿½infoï¿½ and domain is yahoo
 select * from Employees where Email like 'info%' and Email like '%yahoo%'
 
 -- 23 Names that have a dash in them
 select * from Employees where FirstName like '%-%'
 
--- 24 Emails that contain ‘.’ before @
+-- 24 Emails that contain ï¿½.ï¿½ before @
 select * from Employees where Email like '%.%@%' 
 
--- 25 Employees whose name is palindrome (e.g. “Anna”)
+-- 25 Employees whose name is palindrome (e.g. ï¿½Annaï¿½)
 select * from Employees where FirstName = REVERSE(FirstName)
 
---Lab => 4
---Part => A
+
 
 
