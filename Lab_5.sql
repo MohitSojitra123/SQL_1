@@ -54,7 +54,7 @@ select product,avg(sales_amount) from sales_data group by product having avg(sal
 --9. Display Years with Maximum Sales Exceeding 500
 select year,max(sales_amount) from sales_data group by year having max(sales_amount) > 500 
 
---10. Display Regions with at Least 3 Distinct Products Sold.
+--10. Display Regions with at Least 3 Distinct Produc   ts Sold.
 select region,count(distinct product) from sales_data group by region having count(distinct product) >= 3
 
 --11. Display Years with Minimum Sales Less Than 1000
@@ -94,15 +94,19 @@ select * from sales_data
 --Part – C:
 
 --1. Display Products with Average Sales Amount Between 1000 and 2000, Ordered by Product Name
-
+select product,avg(sales_amount) from sales_data  group by product having avg(sales_amount) between 1000 and 2000 order by product asc
 
 --2. Display Years with More Than 1 Orders from Each Region
+select  year,region,count(*) as order_count from sales_data group by year,region having count(*) > 1
 
 --3. Display Regions with Average Sales Amount Above 1500 in Year 2023 sort by amount in descending.
+select region,avg(sales_amount) from sales_data where year='2023' group by region having avg(sales_amount) > 1500 order by avg(sales_amount) desc
 
 --4. Find out region wise duplicate product.
+select region,product,count(*) from sales_data group by region,product having count(*) > 1
 
 --5. Find out year wise duplicate product.
+select year,product,count(*) from sales_data group by year,product having count(*) > 1  
 
 
 
