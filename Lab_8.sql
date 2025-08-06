@@ -86,22 +86,26 @@ select p.city, avg(p.Salary) from PERSON p inner join DEPT d on p.DepartmentID =
 
 --15. Produce Output Like: <PersonName> lives in <City> and works in <DepartmentName> Department. (In single
 --column)
-
+select p.PersonName + ' lives in ' + p.City + ' and works in ' + d.DepartmentName + ' Department.' AS Info from PERSON p
+INNER JOIN DEPT d ON p.DepartmentID = d.DepartmentID;
 
 --Part – B:
 
-
 --1. Produce Output Like: <PersonName> earns <Salary> from <DepartmentName> department monthly. (In
 --single column)
+select p.PersonName + ' earns ' + CAST(p.Salary AS VARCHAR) + ' from ' + d.DepartmentName + ' department monthly.' AS Info
+from PERSON p INNER JOIN  DEPT d on p.DepartmentID = d.DepartmentID;
 
 
 --2. Find city & department wise total, average & maximum salaries.
+select p.city,d.DepartmentName,sum(p.Salary),AVG(p.Salary),max(p.Salary) from PERSON p inner join DEPT d on p.DepartmentID=d.DepartmentID group by p.City,d.DepartmentName
 
 --3. Find all persons who do not belong to any department.
+select p.* from PERSON p full outer join DEPT d on p.DepartmentID = d.DepartmentID where p.DepartmentID is NULL
 
 
 --4. Find all departments whose total salary is exceeding 100000.
-
+select d.DepartmentName,sum(p.Salary) from PERSON p inner join DEPT d on p.DepartmentID = d.DepartmentID group by d.DepartmentName having sum(p.Salary) > 100000
 
 --Part – C:
 
@@ -114,3 +118,16 @@ select d.DepartmentName , COUNT(p.PersonName) from PERSON p inner join dept d on
 select d.DepartmentName , COUNT(*) from PERSON p inner join dept d on p.DepartmentID = d.DepartmentID group by d.DepartmentName having COUNT(*) > 2
 
 --3. Give a 10% increment in the computer department employee’s salary. (Use Update)
+UPDATE p
+SET p.Salary = p.Salary * 1.10
+FROM PERSON p
+INNER JOIN DEPT d ON p.DepartmentID = d.DepartmentID
+WHERE d.DepartmentName = 'Computer';
+
+SELECT p.PersonName, p.Salary, d.DepartmentName
+FROM PERSON p
+JOIN DEPT d ON p.DepartmentID = d.DepartmentID
+WHERE d.DepartmentName = 'Computer';
+
+
+
