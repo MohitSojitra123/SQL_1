@@ -55,17 +55,31 @@ select RAND()
 --Create and insert the following records in the EMP_MASTER table. 
 
 --1. Display the result of Salary plus Commission.
+
+
 --2. Find smallest integer value that is greater than or equal to 55.2, 35.7 and -55.2.
+
+
 --3. Find largest integer value that is smaller than or equal to 55.2, 35.7 and -55.2.
+
+
 --4. Find out remainder of 55 divided 2 and 55 divided by 3.
+
+
 --5. Find out value of 23 raised to 2nd power and 14 raised 3rd power.
 
 
 --Part � C:
 --1. Retrieve the details of employees whose total earnings (Salary + Commission) are greater than 15000.
+
+
 --2. Find the details of employees whose commission is more than 25% of their salary
+
+
 --3. List the employees who joined before 2005 and whose total earnings (Salary + Commission) are greater than
 --15000.
+
+
 --4. Find employees whose total earnings (Salary + Commission) are at least double their salary.
 
 
